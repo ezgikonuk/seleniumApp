@@ -37,9 +37,9 @@ public class ProductPage {
         driver.findElement(basketButton).click();
     }
 
-    public BasketPage clickBasketPage() {
+    public CartPage clickBasketPage() {
         wait.until(ExpectedConditions.elementToBeClickable(myBasketButton));
         driver.findElement(myBasketButton).click();
-        return new BasketPage(driver);
+        return new CartPage(driver);
     }
 }

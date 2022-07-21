@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.BasketPage;
+import pages.CartPage;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchPage;
@@ -37,7 +37,6 @@ public class BaseTest {
         // Tum islemler arasina 1 saniye delay ekledim, rahat anlasilabilmesi icin
         CSVReader csvReader = new CSVReader();
         List<String> texts = csvReader.getSearchTexts(getFileFromResource("books.csv")); // CSV dosyası okunur
-        Thread.sleep(1000);
         homePage.fillSearchArea(texts.get(0)); // Aramaya csv dosyasındaki text yazılır
         Thread.sleep(1000);
         SearchPage searchPage = homePage.clickSearchButton(); //Arama butonuna basarak arama kutusuna girilmiş olan roman kelimesini aratır.
@@ -51,7 +50,7 @@ public class BaseTest {
         if (!"0".equals(cartCount)) { // Ürünün sepete eklendiği kontrol edilir
             productPage.clickMyBasket();
             Thread.sleep(1000);
-            BasketPage cartPage = productPage.clickBasketPage(); // Sepet sayfasına gidilir
+            CartPage cartPage = productPage.clickBasketPage(); // Sepet sayfasına gidilir
             Thread.sleep(1000);
             cartPage.increaseProductCount(cartCount); // Ürün miktarı arttırılır
             Thread.sleep(1000);

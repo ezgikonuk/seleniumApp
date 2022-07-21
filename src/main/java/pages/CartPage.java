@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasketPage {
+public class CartPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
@@ -16,10 +16,10 @@ public class BasketPage {
     private final By increaseProductButton = By.xpath("//input[@name='quantity']");
     private final By refreshButton = By.xpath("//i[@title='Güncelle']");
     private final By deleteProductButton = By.xpath("//i[@title='Kaldır']");
-    private final By basketStatus = By.xpath("//div[@class='content']");
-    String expectedBasketStatus = "Sepetinizdeki ürünleri görmek için üye girişi yapmanız gerekmektedir.";
+    private final By cartArea = By.xpath("//div[@class='content']");
+    String cartStatus = "Sepetinizdeki ürünleri görmek için üye girişi yapmanız gerekmektedir.";
 
-    public BasketPage(WebDriver driver) {
+    public CartPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(50));
     }
@@ -48,8 +48,8 @@ public class BasketPage {
     }
 
     public void checkBasketStatus(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(basketStatus));
-        Assert.assertTrue(expectedBasketStatus.contains(driver.findElement(basketStatus).getText()));
+        wait.until(ExpectedConditions.presenceOfElementLocated(cartArea));
+        Assert.assertTrue(cartStatus.contains(driver.findElement(cartArea).getText()));
         System.out.println("Sepet bos");
     }
 }
